@@ -1,0 +1,1 @@
+"""Prometheus Wireguard Exporter (Python)."""

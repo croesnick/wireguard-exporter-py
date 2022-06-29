@@ -1,0 +1,14 @@
+{
+  "_output_dir": "/Users/crn-tng/code-private",
+  "_template": "gh:cjolowicz/cookiecutter-hypermodern-python",
+  "author": "Carsten R\u00f6snick-Neugebauer",
+  "copyright_year": "2022",
+  "development_status": "Development Status :: 3 - Alpha",
+  "email": "croesnick@gmail.com",
+  "friendly_name": "Prometheus Wireguard Exporter (Python)",
+  "github_user": "croesnick",
+  "license": "MIT",
+  "package_name": "wireguard_exporter_py",
+  "project_name": "wireguard-exporter-py",
+  "version": "0.0.1"
+}
