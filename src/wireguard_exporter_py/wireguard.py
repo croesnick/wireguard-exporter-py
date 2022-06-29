@@ -2,14 +2,13 @@
 
 from dataclasses import dataclass
 import datetime
+import re
 import subprocess
 from typing import List, Optional
 
 
 @dataclass
 class Peer:
-    public_key: str
-    preshared_key: str
     endpoint: str
     allowed_ips: str
     latest_handshake: datetime.datetime
@@ -20,7 +19,6 @@ class Peer:
 
 @dataclass
 class Info:
-    public_key: str
     listen_port: int
     fwmark: str
 
@@ -28,10 +26,16 @@ class Info:
 
 
 def parse_peer(line: str) -> Optional[Peer]:
-    parts = line.split("\t")
+    """Parses a peer line of the wg show dump output into an object.
+
+    ## Examples
+
+        >>> line = "whuM9vKf/publickey=	TO8vy/LuK7E2k/prehared/key=	1.2.3.4:28415	10.6.0.2/32	1656493413	640043784	6228128716	off"
+        >>> parse_peer(line)  # doctest: +NORMALIZE_WHITESPACE
+        Peer(endpoint='1.2.3.4:28415', allowed_ips='10.6.0.2/32', latest_handshake=datetime.datetime(2022, 6, 29, 11, 3, 33), transfer_rx=640043784, transfer_tx=6228128716, persistent_keepalive='off')
+    """
+    parts = re.split(r"\s+", line)
     return Peer(
-        public_key=parts[0],
-        preshared_key=parts[1],
         endpoint=parts[2],
         allowed_ips=parts[3],
         latest_handshake=datetime.datetime.fromtimestamp(float(parts[4])),
@@ -47,12 +51,12 @@ def parse(raw: str) -> Optional[Info]:
     peers = [parse_peer(line) for line in lines[1:]]
     peers = [peer for peer in peers if peer]
 
-    parts = lines[0].split("\t")
+    parts = re.split(r"\s+", lines[0])
 
     return Info(
-        public_key=parts[1],
         listen_port=int(parts[2]),
         fwmark=parts[3],
+        peers=peers,
     )
 
 
