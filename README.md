@@ -23,23 +23,27 @@
 
 ## Features
 
-- TODO
+Fetches Wireguard statistics from current running process by invoking `wg show <iface> dump`.
+Currently, two gauges are exposes: whether executing and parsing the above command succeeded, and the number of current open connections.
 
 ## Requirements
 
-- TODO
+Python >=3.9.
 
 ## Installation
 
-You can install _Prometheus Wireguard Exporter (Python)_ via [pip] from [PyPI]:
-
-```console
-$ pip install wireguard-exporter-py
-```
+You can install _Prometheus Wireguard Exporter (Python)_ from this repo via [pip].
 
 ## Usage
 
 Please see the [Command-line Reference] for details.
+
+## Alternatives
+
+This exporter is merely a sample how to use the Prometheus Python client to build your own exporter. 😊
+It is far from exposing all relevant Wireguard metrics.
+
+If you want a more complete exporter, try, for instance, <https://github.com/MindFlavor/prometheus_wireguard_exporter>.
 
 ## Contributing
 
