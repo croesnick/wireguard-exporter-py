@@ -1,4 +1,7 @@
-"""Get information from running Wireguard instance."""
+"""Get information from running Wireguard instance.
+
+For more information about the fields, see <https://manpages.debian.org/unstable/wireguard-tools/wg.8.en.html#show>.
+"""
 
 from dataclasses import dataclass
 import datetime
