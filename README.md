@@ -34,6 +34,20 @@ Python >=3.9.
 
 You can install _Prometheus Wireguard Exporter (Python)_ from this repo via [pip].
 
+### Docker
+
+Build the image
+
+```shell
+docker build -t wireguard-exporter .
+```
+
+and run it with
+
+```shell
+docker run -d --net=host --cap-add=NET_ADMIN wireguard-exporter
+```
+
 ## Usage
 
 Please see the [Command-line Reference] for details.
