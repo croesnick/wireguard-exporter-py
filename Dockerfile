@@ -1,6 +1,8 @@
-FROM python:3.9-slim
+FROM python:3.9-buster
 
 LABEL maintainer Carsten Rösnick-Neugebauer
+
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 COPY . .
 RUN pip3 install -U poetry && poetry build && pip3 install -U dist/wireguard_exporter_py-*.whl
 
