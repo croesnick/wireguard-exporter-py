@@ -45,7 +45,7 @@ docker build -t wireguard-exporter .
 and run it with
 
 ```shell
-docker run -d --net=host --cap-add=NET_ADMIN wireguard-exporter
+docker run -d --net=host --cap-add=NET_ADMIN -v $(which wg):/usr/bin/wg:ro --name wireguard-exporter wireguard-exporter
 ```
 
 ## Usage
