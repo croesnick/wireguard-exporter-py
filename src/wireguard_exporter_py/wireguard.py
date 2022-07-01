@@ -71,5 +71,5 @@ def fetch() -> Optional[Info]:
     if result.returncode != 0:
         return None
 
-    output = result.decode("utf-8")
+    output = result.stdout.decode("utf-8")
     return parse(output)
